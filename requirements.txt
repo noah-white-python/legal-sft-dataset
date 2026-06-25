@@ -1,0 +1,12 @@
+# 数据处理
+pandas>=2.0
+
+# HuggingFace 数据集下载(冷启动)
+datasets>=2.14
+
+# 爬虫(Day 3 起用到)
+requests>=2.31
+beautifulsoup4>=4.12
+
+# 进度条(Day 6)
+tqdm>=4.66

@@ -1,0 +1,28 @@
+# 原始/大数据文件不进版本库(只跟踪代码和文档)
+data/raw/*
+data/processed/*
+!data/**/.gitkeep
+*.sqlite
+*.db
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+
+# HuggingFace / 缓存
+.cache/
+hf_cache/
+
+# 编辑器 / 系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# 日志
+*.log
+logs/
