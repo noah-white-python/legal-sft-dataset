@@ -56,8 +56,25 @@ python exercises/inspect_csv.py data/raw/seed_*.csv
 
 - [x] Day 1 — 项目脚手架 + pandas/工程基础
 - [x] Day 2 — HuggingFace 现成数据集冷启动(项目"有数据")
-- [ ] Day 3 — 异步 + 静态页爬取
-- [ ] Day 4 — 数据源调研
-- [ ] Day 5 — 第一版爬虫(同步)
-- [ ] Day 6 — 修 bug + 上量
-- [ ] Day 7 — 复盘 + 周报
+- [x] Day 3 — 异步限流 demo + 静态页爬取(代码就绪,跑通)
+- [~] Day 4 — 数据源调研(文档骨架已建,结论待填)
+- [x] Day 5 — 同步爬虫:sqlite 断点续爬 + 重试 + 死信(代码就绪,跑通)
+- [x] Day 6 — tqdm 进度监控 + 每批汇总(代码就绪)
+- [~] Day 7 — 周报模板已建(待填实际数据)
+
+> 说明:Day 3/5/6 的**代码骨架已写好并在演示站点(quotes/books.toscrape.com)跑通**。
+> 真正要你自己做的是:读懂这些代码、把 `src/crawler/parsers.py` 里的 `BaiduZhidaoParser`
+> 填成真实法律问答源,以及完成调研/周报里的判断部分。
+
+## 代码地图(给读码用)
+
+| 文件 | 对应 | 直接运行 |
+|---|---|---|
+| `exercises/inspect_csv.py` | Day 1 CSV 质检 | `python exercises/inspect_csv.py data/raw/*.csv` |
+| `scripts/download_seed_data.py` | Day 2 冷启动下载 | `python scripts/download_seed_data.py --limit 5000` |
+| `src/async_demo.py` | Day 3 异步 + Semaphore 限流 | `python src/async_demo.py` |
+| `src/static_scrape_demo.py` | Day 3 requests+bs4 静态爬 | `python src/static_scrape_demo.py` |
+| `src/crawler/storage.py` | Day 5 sqlite 去重/断点/死信 | (被主程序调用) |
+| `src/crawler/fetcher.py` | Day 5 重试/超时/限速 | (被主程序调用) |
+| `src/crawler/parsers.py` | 解析适配层(换站点改这里) | (被主程序调用) |
+| `src/crawler/run_crawler.py` | Day 5+6 主爬虫 + 进度 | `python -m src.crawler.run_crawler --site quotes` |
