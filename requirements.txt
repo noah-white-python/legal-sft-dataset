@@ -13,3 +13,9 @@ tqdm>=4.66
 
 # MinHash 近似去重(数据处理流水线)
 datasketch>=1.6
+
+# API 调用(LLM-as-judge 打分)
+requests>=2.31
+
+# 可视化(数据质量图表)
+matplotlib>=3.7
