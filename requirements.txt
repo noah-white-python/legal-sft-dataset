@@ -10,3 +10,6 @@ beautifulsoup4>=4.12
 
 # 进度条(Day 6)
 tqdm>=4.66
+
+# MinHash 近似去重(数据处理流水线)
+datasketch>=1.6

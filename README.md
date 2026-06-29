@@ -2,6 +2,19 @@
 
 构建一个**中文法律领域的 SFT(监督微调)数据集**:从公开来源采集"法律问答"对,经过清洗、去重、质量过滤,最终格式化成可直接用于大模型微调的训练数据。
 
+## 数据成果
+
+| | |
+|---|---|
+| 📦 最终有效数据 | **19,332** 条法律问答对(Alpaca 格式) |
+| 🗂️ 数据来源 | 开源数据集 DISC-Law-SFT 冷启动 + 自建爬虫工程(已跑通) |
+| ✅ 总有效率 | 96.7%(20,000 → 19,332) |
+| 🧹 去重 | 精确去重 0.5% + MinHash 近似去重 2.6% |
+| 📐 平均长度 | 问题 27 字 / 答案 432 字 |
+| 🛠️ 技术栈 | Python · pandas · asyncio · requests · MinHash(datasketch)· SQLite |
+
+> 完整逐级统计见 [`docs/quality_report.md`](docs/quality_report.md);训练数据见 `data/processed/legal_sft.jsonl`。
+
 ## 为什么做这个
 
 大模型在通用语料上预训练后,要靠 SFT 才能学会"按指令、按领域回答"。中文法律是一个**高价值、高门槛**的垂直领域:问答结构天然成对(咨询→解答),但公开的高质量数据稀缺。本项目就是把散落的法律问答整理成一份干净、可训练的数据集。
@@ -45,6 +58,9 @@ python scripts/download_seed_data.py
 
 # 3. 用 pandas 看一眼数据质量
 python exercises/inspect_csv.py data/raw/seed_*.csv
+
+# 4. 跑数据处理流水线:清洗→去重→质量过滤→格式化,并生成质量报告
+python src/build_dataset.py
 ```
 
 ## 本周(第 1 周)计划
@@ -78,3 +94,4 @@ python exercises/inspect_csv.py data/raw/seed_*.csv
 | `src/crawler/fetcher.py` | Day 5 重试/超时/限速 | (被主程序调用) |
 | `src/crawler/parsers.py` | 解析适配层(换站点改这里) | (被主程序调用) |
 | `src/crawler/run_crawler.py` | Day 5+6 主爬虫 + 进度 | `python -m src.crawler.run_crawler --site quotes` |
+| `src/build_dataset.py` | 清洗→去重→质量过滤→格式化 + 质量报告 | `python src/build_dataset.py` |
