@@ -2,6 +2,8 @@
 
 构建一个**中文法律领域的 SFT(监督微调)数据集**:从公开来源采集"法律问答"对,经过清洗、去重、质量过滤,最终格式化成可直接用于大模型微调的训练数据。
 
+📦 **数据集已开源到 HuggingFace**:[noah248/chinese-legal-sft](https://huggingface.co/datasets/noah248/chinese-legal-sft)
+
 ## 数据成果
 
 | | |
